@@ -17,15 +17,11 @@ function UserSearch() {
     if (text === "") {
       setAlert("Please enter something", "error");
     } else {
-      try {
-        dispatch({ type: "SET_LOADING" });
-        const users = await searchUsers(text);
-        dispatch({ type: "GET_USERS", payload: users });
-        setText("");
-      } catch (error) {
-        // handle error here, e.g., set an error message
-        console.error(error);
-      }
+      dispatch({ type: "SET_LOADING" });
+      const users = await searchUsers(text);
+      dispatch({ type: "GET_USERS", payload: users });
+
+      setText("");
     }
   };
 
